@@ -4,4 +4,4 @@ package-lock.json
 yarn-error.log
 yarn.lock
 
-./config/key.json
+/config/key.json
