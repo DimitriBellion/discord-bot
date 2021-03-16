@@ -8,10 +8,15 @@
   },
   "dependencies": {
     "ascii-table": "0.0.9",
+    "common-tags": "^1.8.0",
     "discord.js": "^12.5.1",
+    "fortnite": "^4.3.2",
     "gradient-string": "^1.2.0",
     "listr": "^0.14.3",
+    "moment": "^2.29.1",
     "ora": "^5.3.0",
-    "rxjs": "^6.6.3"
+    "random-puppy": "^1.1.0",
+    "rxjs": "^6.6.3",
+    "weather-js": "^2.0.0"
   }
 }

@@ -5,7 +5,7 @@ module.exports = (client, message, args) => {
         // { name: `Divulgando seu server⭐`, type: 'WATCHING', url: 'https://twitch.tv/semnome', },
         // { name: `Version 0.0.1 `, type: 'PLAYING', url: 'https://twitch.tv/semnome', },
         // { name: `Desenvolvido pela 403 Software`, type: 'LISTENING', url: 'https://twitch.tv/semnome', },
-        { name: '🌀 Criado por Dimitri / Wendy / Cringe', type: 'STREAMING', url: 'https://twitch.tv/semnome', },
+        { name: '🌀 Criado por Dimitri', type: 'STREAMING', url: 'https://twitch.tv/semnome', },
         { name: `s*help`, type: 'STREAMING', url: 'https://twitch.tv/semnome', },
     ];
     function setStatus() {

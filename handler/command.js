@@ -2,7 +2,7 @@ const { readdirSync } = require('fs');
 const ascii = require('ascii-table');
 const table = new ascii().setHeading('Painel Commands', 'Loading Status');
 
-module.exports = (DK) => {
+module.exports = (client) => {
     readdirSync("./commands/").forEach(dir => {
         const commands = readdirSync(`./commands/${dir}/`).filter(f => f.endsWith(".js"));
 
@@ -10,14 +10,14 @@ module.exports = (DK) => {
             let pull = require(`../commands/${dir}/${file}`);
 
             if (pull.name) {
-                DK.commands.set(pull.name, pull);
+                client.commands.set(pull.name, pull);
                 table.addRow(file, '✔️ Success');
             } else {
                 table.addRow(file, '❌ Error');
                 continue;
             }
             if (pull.aliases && Array.isArray(pull))
-                pull.aliases.forEach(alias => DK.aliases.set(alias, pull.name));
+                pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
         }
     });
 

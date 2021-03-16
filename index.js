@@ -1,8 +1,7 @@
 const { Client, Collection } = require('discord.js');
 const { prefix, token } = require('./config/key.json');
-const ora = require('ora');
 const gradient = require('gradient-string');
-
+const fs = require('fs');
 const client = new Client();
 
 client.commands = new Collection()
@@ -10,27 +9,8 @@ client.aliases = new Collection()
 
 console.log(gradient('cyan', 'pink')('STARTING BOT'));
 
-// const spinning = ora({
-//     color: 'green',
-//     interval: 180,
-//     text: 'Loading',
-//     spinner: 'aesthetic'
-// });
-
-// const spinner = {
-//     async SpinnerSucess(args) {
-//         await setTimeout(async () => {
-//             spinning.start(args);
-//             await setTimeout(() => {
-//                 spinning.succeed(args);
-//             }, 3000);
-//         }, 500);
-//         spinning.stop();
-//     },
-// }
-
 // const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
-// const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 // for (const file of commandFiles) {
 //     const command = require(`./commands/${file}`);
@@ -46,20 +26,20 @@ console.log(gradient('cyan', 'pink')('STARTING BOT'));
 
 // };
 
-// fs.readdir('./events/', (err, files) => {
-//     if (err) return console.error;
-//     files.forEach(file => {
-//       if (!file.endsWith('.js')) return;
-//       const event = require(`./events/${file}`);
-//       let eventName = file.split('.')[0];
-//       try {
-//         client.on(eventName, event.bind(null, client));
-//         console.log(`[✓] ${eventName}`);
-//       } catch (err) {
-//         console.log(`[✗] ${eventName}`);
-//       }
-//     })
-//   })
+fs.readdir('./events/', (err, files) => {
+    if (err) return console.error;
+    files.forEach(file => {
+      if (!file.endsWith('.js')) return;
+      const event = require(`./events/${file}`);
+      let eventName = file.split('.')[0];
+      try {
+        client.on(eventName, event.bind(null, client));
+        console.log(`[✓] ${eventName}`);
+      } catch (err) {
+        console.log(`[✗] ${eventName}`);
+      }
+    })
+  })
 
 // async function events() {
 //     for (const event of eventFiles) {
@@ -69,14 +49,8 @@ console.log(gradient('cyan', 'pink')('STARTING BOT'));
 //         const events = require(`./events/${event}`);
 //         try {
 //             client.on(eventName, event.bind(null, client));
-//             spinning.start(eventName);
-//             // await new Promise(resolve => {
-//                 // setTimeout(resolve, 5000);
-//                 // spinning.succeed();
-//             // });
 //         } catch (error) {
 //             console.log(error)
-//             spinning.fail(eventName);
 //         }
 //     }
 // }
